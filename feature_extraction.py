@@ -1,5 +1,6 @@
-import pickle
 import tensorflow as tf
+import fickling
+
 # TODO: import Keras layers you need here
 
 flags = tf.app.flags
@@ -22,9 +23,9 @@ def load_bottleneck_data(training_file, validation_file):
     print("Validation file", validation_file)
 
     with open(training_file, 'rb') as f:
-        train_data = pickle.load(f)
+        train_data = fickling.load(f)
     with open(validation_file, 'rb') as f:
-        validation_data = pickle.load(f)
+        validation_data = fickling.load(f)
 
     X_train = train_data['features']
     y_train = train_data['labels']
