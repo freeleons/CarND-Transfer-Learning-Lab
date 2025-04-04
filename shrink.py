@@ -2,6 +2,7 @@ import pickle
 import tensorflow as tf
 from collections import Counter
 from sklearn.utils import shuffle
+import fickling
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
@@ -15,7 +16,7 @@ flags.DEFINE_integer('size', 100, 'Number of examples per class to keep')
 def main(_):
     # load bottleneck data
     with open(FLAGS.training_file, 'rb') as f:
-        train_data = pickle.load(f)
+        train_data = fickling.load(f)
     X_train = train_data['features']
     y_train = train_data['labels']
 

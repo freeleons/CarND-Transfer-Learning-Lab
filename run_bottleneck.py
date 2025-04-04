@@ -8,6 +8,7 @@ from keras.datasets import cifar10
 import pickle
 import tensorflow as tf
 import keras.backend as K
+import fickling
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
@@ -74,7 +75,7 @@ def main(_):
         X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=0)
     else:
         with open('data/train.p', mode='rb') as f:
-            train = pickle.load(f)
+            train = fickling.load(f)
         X_train, X_val, y_train, y_val = train_test_split(train['features'], train['labels'], test_size=0.33, random_state=0)
 
     train_output_file = "{}_{}_{}.p".format(FLAGS.network, FLAGS.dataset, 'bottleneck_features_train')
